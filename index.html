@@ -269,7 +269,7 @@ function fixImgUrl(url){
   if(!url)return '';
   // Convertir Google Drive /file/d/ID/ → enlace directo embebible
   const m=url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-  if(m)return 'https://drive.google.com/uc?export=view&id='+m[1];
+  if(m)return 'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w1000';
   return url;
 }
 
