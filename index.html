@@ -146,6 +146,8 @@ const ROT={
   mj:{r1:{violeta:'Parque 🌿',azul:'Parque 🌿',amarillo:'Actividad 🎨',naranja:'Baile 💃'},r2:{violeta:'Actividad 🎨',azul:'Actividad 🎨',amarillo:'Baile 💃',naranja:'Parque 🌿'},r3:{violeta:'Baile 💃',azul:'Baile 💃',amarillo:'Parque 🌿',naranja:'Actividad 🎨'}}
 };
 const ROT_CLS={'Parque 🌿':'dk','Piscina 🏊':'dp','Baile 💃':'db','Actividad 🎨':'da'};
+// Días de junio en que SÍ hay Baile
+const BAILE_DAYS=new Set([4,5,8,9,10,15,16,17,22,23,25]);
 const SCHED=[
   {t:'7:30–8:00',a:'Recibimiento 🌞',d:'30 min',rot:false,cls:'dg'},
   {t:'8:00–8:15',a:'Devocional 🙏',d:'15 min',rot:false,cls:'dg'},
@@ -250,7 +252,7 @@ function renderDay(){
   rows.innerHTML='';
   SCHED.forEach(item=>{
     let actName=item.a,cls=item.cls||'dg',isRot=false;
-    if(item.rot){actName=ROT[type][item.rk][curGrp];cls=ROT_CLS[actName]||'da';isRot=true;}
+    if(item.rot){actName=ROT[type][item.rk][curGrp];if(actName==='Baile 💃'&&!BAILE_DAYS.has(d))actName='Actividad 🎨';cls=ROT_CLS[actName]||'da';isRot=true;}
     const row=document.createElement('div');
     row.className='hor-row'+(isRot?' rot':'');
     row.innerHTML=`<span class="hor-time">${item.t}</span><span class="hor-act">${actName}</span><span class="hor-dur ${cls}">${item.d}</span>`;
