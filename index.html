@@ -265,6 +265,14 @@ function loadImg(e,d){
 
 const API_URL='https://script.google.com/macros/s/AKfycbxazzQVfY3mEvNJNHwcuBWWjmOZK7WeQY3KSj9idAp0sYOj7obsp5R6lbrpKD6i5ndMjA/exec';
 
+function fixImgUrl(url){
+  if(!url)return '';
+  // Convertir Google Drive /file/d/ID/ → enlace directo embebible
+  const m=url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if(m)return 'https://drive.google.com/uc?export=view&id='+m[1];
+  return url;
+}
+
 function tagClass(t){
   const lc=t.toLowerCase();
   if(lc.includes('piscina'))return 'tag-piscina';
@@ -300,7 +308,7 @@ async function cargarDatos(){
       JUNE[dia]={
         tags,notes,type:tipo,
         hasImg:!!act.imagen_url,
-        imgUrl:act.imagen_url||'',
+        imgUrl:fixImgUrl(act.imagen_url),
         giraLink:act.gira_url||'',
         feriado:esFeriado
       };
