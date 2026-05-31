@@ -32,7 +32,7 @@ body{font-family:'Nunito',sans-serif;background:#f0f4fa;min-height:100vh}
 .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);background:#1d6fa4}
 .cal-dow span{padding:7px 2px;text-align:center;font-size:9px;font-weight:900;color:#fff;letter-spacing:.3px}
 .cal-days{display:grid;grid-template-columns:repeat(7,1fr)}
-.cal-day{border-right:.5px solid #f3f4f6;border-bottom:.5px solid #f3f4f6;padding:3px;min-height:62px;cursor:pointer;transition:background .15s}
+.cal-day{border-right:.5px solid #f3f4f6;border-bottom:.5px solid #f3f4f6;padding:3px;min-height:72px;cursor:pointer;transition:background .15s}
 .cal-day:hover{background:#f0f9ff}
 .cal-day.empty{background:#fafafa;cursor:default}
 .cal-day.feriado{background:#fef2f2!important;cursor:default}
@@ -207,7 +207,7 @@ function renderMonth(){
       cell.onclick=(()=>{const idx=CAMP_DAYS.indexOf(d);return()=>{curDayIdx=idx;setView('dia');};})();
     }
     let tags='';
-    if(data.tags)data.tags.slice(0,2).forEach(t=>{tags+=`<span class="d-tag ${t.c}">${t.l}</span>`;});
+    if(data.tags)data.tags.forEach(t=>{tags+=`<span class="d-tag ${t.c}">${t.l}</span>`;});
     if(isFeriado)tags='<span class="d-tag tag-feriado">Feriado</span>';
     cell.innerHTML=`<div class="d-num ${isWknd?'wknd':''}">${d}</div>${tags}`;
     grid.appendChild(cell);
