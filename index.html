@@ -22,6 +22,7 @@ body{font-family:'Nunito',sans-serif;background:#f0f4fa;min-height:100vh}
 .gtab .gdot{font-size:20px;display:block;margin-bottom:3px}
 .gtab .gage{font-size:10px;font-weight:600;display:block;color:inherit;opacity:.85}
 .gtab.gv{background:#7c3aed;border-color:#7c3aed;color:#fff}
+.gtab.gb{background:#3b82f6;border-color:#3b82f6;color:#fff}
 .gtab.ga{background:#d97706;border-color:#d97706;color:#fff}
 .gtab.gn{background:#ea580c;border-color:#ea580c;color:#fff}
 .month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -100,9 +101,10 @@ body{font-family:'Nunito',sans-serif;background:#f0f4fa;min-height:100vh}
 </div>
 
 <div class="grp-tabs" id="grp-tabs" style="display:none">
-  <button class="gtab gv" onclick="setGrp('violeta')"><span class="gdot">🟣</span>Violeta<span class="gage">4–7 años</span></button>
-  <button class="gtab" onclick="setGrp('amarillo')"><span class="gdot">🟡</span>Amarillo<span class="gage">8–10 años</span></button>
-  <button class="gtab" onclick="setGrp('naranja')"><span class="gdot">🟠</span>Naranja<span class="gage">11–13 años</span></button>
+  <button class="gtab gv" onclick="setGrp('violeta')"><span class="gdot">🟣</span>Violeta<span class="gage">4–6 años</span></button>
+  <button class="gtab" onclick="setGrp('azul')"><span class="gdot">🔵</span>Azul<span class="gage">7–8 años</span></button>
+  <button class="gtab" onclick="setGrp('amarillo')"><span class="gdot">🟡</span>Amarillo<span class="gage">9–10 años</span></button>
+  <button class="gtab" onclick="setGrp('naranja')"><span class="gdot">🟠</span>Naranja<span class="gage">11–15 años</span></button>
 </div>
 
 <div id="v-mes">
@@ -140,8 +142,8 @@ body{font-family:'Nunito',sans-serif;background:#f0f4fa;min-height:100vh}
 
 <script>
 const ROT={
-  lmv:{r1:{violeta:'Parque 🌿',amarillo:'Piscina 🏊',naranja:'Baile 💃'},r2:{violeta:'Piscina 🏊',amarillo:'Baile 💃',naranja:'Parque 🌿'},r3:{violeta:'Baile 💃',amarillo:'Parque 🌿',naranja:'Piscina 🏊'}},
-  mj:{r1:{violeta:'Parque 🌿',amarillo:'Actividad 🎨',naranja:'Baile 💃'},r2:{violeta:'Actividad 🎨',amarillo:'Baile 💃',naranja:'Parque 🌿'},r3:{violeta:'Baile 💃',amarillo:'Parque 🌿',naranja:'Actividad 🎨'}}
+  lmv:{r1:{violeta:'Parque 🌿',azul:'Parque 🌿',amarillo:'Piscina 🏊',naranja:'Baile 💃'},r2:{violeta:'Piscina 🏊',azul:'Piscina 🏊',amarillo:'Baile 💃',naranja:'Parque 🌿'},r3:{violeta:'Baile 💃',azul:'Baile 💃',amarillo:'Parque 🌿',naranja:'Piscina 🏊'}},
+  mj:{r1:{violeta:'Parque 🌿',azul:'Parque 🌿',amarillo:'Actividad 🎨',naranja:'Baile 💃'},r2:{violeta:'Actividad 🎨',azul:'Actividad 🎨',amarillo:'Baile 💃',naranja:'Parque 🌿'},r3:{violeta:'Baile 💃',azul:'Baile 💃',amarillo:'Parque 🌿',naranja:'Actividad 🎨'}}
 };
 const ROT_CLS={'Parque 🌿':'dk','Piscina 🏊':'dp','Baile 💃':'db','Actividad 🎨':'da'};
 const SCHED=[
@@ -160,8 +162,8 @@ let JUNE={};
 let WEEKS=[];
 let CAMP_DAYS=[];
 const DOW=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-const GRP_CLR={violeta:'#7c3aed',amarillo:'#d97706',naranja:'#ea580c'};
-const GRP_NAME={violeta:'Violeta 🟣',amarillo:'Amarillo 🟡',naranja:'Naranja 🟠'};
+const GRP_CLR={violeta:'#7c3aed',azul:'#3b82f6',amarillo:'#d97706',naranja:'#ea580c'};
+const GRP_NAME={violeta:'Violeta 🟣',azul:'Azul 🔵',amarillo:'Amarillo 🟡',naranja:'Naranja 🟠'};
 const imageStore={};
 let curView='mes',curGrp='violeta',curDayIdx=0;
 
@@ -182,7 +184,7 @@ function setGrp(g){
   curGrp=g;
   document.querySelectorAll('.grp-tabs .gtab').forEach(t=>{
     t.className='gtab';
-    if(t.getAttribute('onclick').includes("'"+g+"'"))t.classList.add(g==='violeta'?'gv':g==='amarillo'?'ga':'gn');
+    if(t.getAttribute('onclick').includes("'"+g+"'"))t.classList.add(g==='violeta'?'gv':g==='azul'?'gb':g==='amarillo'?'ga':'gn');
   });
   if(curView==='dia')renderDay();
 }
