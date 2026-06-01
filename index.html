@@ -233,7 +233,7 @@ function renderDay(){
   if(data.notes)data.notes.forEach(n=>{notesHtml+=`<div class="dv-note">📌 ${n}</div>`;});
   let giraHtml='';
   if(data.giraLink){
-    giraHtml=`<a class="gira-link" href="${data.giraLink}" target="_blank"><span style="font-size:22px">📋</span><span class="gira-link-txt">Completa el relevo y autorización de la gira<br><span style="font-size:10px;font-weight:600;opacity:.75">Toca aquí para acceder al formulario</span></span><span style="font-size:18px;color:#d97706">&#8594;</span></a>`;
+    giraHtml=`<a class="gira-link" href="${data.giraLink}" target="_blank"><span style="font-size:22px">📋</span><span class="gira-link-txt">Completa el relevo y autorización de la actividad<br><span style="font-size:10px;font-weight:600;opacity:.75">Toca aquí para acceder al formulario</span></span><span style="font-size:18px;color:#d97706">&#8594;</span></a>`;
   }
   let imgHtml='';
   if(data.imgUrl){
